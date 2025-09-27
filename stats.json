@@ -1,0 +1,20 @@
+{
+  "total_converted": 38,
+  "formats": {
+    "png": {
+      "count": 18,
+      "original_size": 28167892,
+      "final_size": 59760762
+    },
+    "webp": {
+      "count": 20,
+      "original_size": 30585840,
+      "final_size": 3189022
+    }
+  },
+  "best_compression": 94.83067016081928,
+  "worst_compression": -855.1724000351104,
+  "total_saved_cd": 0,
+  "total_saved_floppy": -2,
+  "max_combo": 1
+}

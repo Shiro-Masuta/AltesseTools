@@ -15,8 +15,11 @@ import (
 var assets embed.FS
 
 func main() {
-	app := NewApp()                            // Assure-toi que NewApp() retourne un pointeur: *App
-	converter := service.NewConverterService() // instanciation directe
+	app := NewApp()
+
+	converter := service.NewConverterService()
+	system := service.NewSystemService()
+	stats := service.NewStatsService()
 
 	err := wails.Run(&options.App{
 		Title:     "Altesse_Tools_V1.0",
@@ -35,10 +38,13 @@ func main() {
 		OnStartup: func(ctx context.Context) {
 			app.startup(ctx)
 			converter.SetContext(ctx)
+			system.Startup(ctx)
 		},
 		Bind: []interface{}{
 			app,       // doit être un pointeur
 			converter, // déjà instancié
+			system,
+			stats,
 		},
 	})
 
