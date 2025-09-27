@@ -10,7 +10,7 @@ import (
 	"sync"
 
 	"Altesse_Tools_V1.0/backend/internal/images"
-	"Altesse_Tools_V1.0/backend/pkg"
+	"Altesse_Tools_V1.0/backend/internal/stats"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -26,9 +26,8 @@ func (c *ConverterService) SetContext(ctx context.Context) {
 	c.ctx = ctx
 }
 
-// helper pour enregistrer les stats après chaque conversion
 func (c *ConverterService) recordStats(originalSize, finalSize int64, format string) {
-	err := pkg.RegisterConversion(format, originalSize, finalSize)
+	err := stats.RegisterConversion(format, originalSize, finalSize)
 	if err != nil {
 		runtime.LogError(c.ctx, fmt.Sprintf("Erreur enregistrement stats: %v", err))
 	}

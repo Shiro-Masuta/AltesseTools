@@ -1,4 +1,4 @@
-package pkg
+package stats
 
 import (
 	"encoding/json"
@@ -6,19 +6,6 @@ import (
 	"path/filepath"
 	"sync"
 )
-
-type FormatStats struct {
-	Count        int   `json:"count"`         // nombre d'images converties dans ce format
-	OriginalSize int64 `json:"original_size"` // taille totale avant conversion (en octets)
-	FinalSize    int64 `json:"final_size"`    // taille totale après conversion (en octets)
-}
-
-type Stats struct {
-	TotalConverted   int                     `json:"total_converted"`
-	Formats          map[string]*FormatStats `json:"formats"`
-	TotalSavedInCD   int64                   `json:"total_saved_cd"`     // en CD 700 Mo
-	TotalSavedFloppy int64                   `json:"total_saved_floppy"` // en disquettes 1.44 Mo
-}
 
 var (
 	statsFile string
@@ -65,7 +52,7 @@ func SaveStats(s *Stats) error {
 	return os.WriteFile(statsFile, data, 0644)
 }
 
-// Enregistre une conversion en tenant compte du format et de la taille avant/après
+// RegisterConversion enregistre une conversion et met à jour les statistiques
 func RegisterConversion(format string, originalSize, finalSize int64) error {
 	mutex.Lock()
 	defer mutex.Unlock()
@@ -85,7 +72,7 @@ func RegisterConversion(format string, originalSize, finalSize int64) error {
 	stats.Formats[format].OriginalSize += originalSize
 	stats.Formats[format].FinalSize += finalSize
 
-	// Équivalences fun
+	// Calcul des économies
 	totalSaved := int64(0)
 	for _, f := range stats.Formats {
 		totalSaved += f.OriginalSize - f.FinalSize
@@ -94,4 +81,12 @@ func RegisterConversion(format string, originalSize, finalSize int64) error {
 	stats.TotalSavedFloppy = totalSaved / 1474560
 
 	return SaveStats(stats)
+}
+
+func (s *Stats) TotalSizes() (original, compressed int64) {
+	for _, f := range s.Formats {
+		original += f.OriginalSize
+		compressed += f.FinalSize
+	}
+	return
 }

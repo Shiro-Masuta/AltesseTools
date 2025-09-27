@@ -42,32 +42,11 @@ export namespace main {
 
 }
 
-export namespace pkg {
-	
-	export class FormatStats {
-	    count: number;
-	    original_size: number;
-	    final_size: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new FormatStats(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.count = source["count"];
-	        this.original_size = source["original_size"];
-	        this.final_size = source["final_size"];
-	    }
-	}
-
-}
-
 export namespace services {
 	
 	export class WidgetStats {
 	    total_converted: number;
-	    formats: Record<string, pkg.FormatStats>;
+	    formats: Record<string, stats.FormatStats>;
 	    total_saved_cd: number;
 	    total_saved_floppy: number;
 	    total_original_size: number;
@@ -80,7 +59,7 @@ export namespace services {
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
 	        this.total_converted = source["total_converted"];
-	        this.formats = this.convertValues(source["formats"], pkg.FormatStats, true);
+	        this.formats = this.convertValues(source["formats"], stats.FormatStats, true);
 	        this.total_saved_cd = source["total_saved_cd"];
 	        this.total_saved_floppy = source["total_saved_floppy"];
 	        this.total_original_size = source["total_original_size"];
@@ -104,6 +83,27 @@ export namespace services {
 		    }
 		    return a;
 		}
+	}
+
+}
+
+export namespace stats {
+	
+	export class FormatStats {
+	    count: number;
+	    original_size: number;
+	    final_size: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new FormatStats(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.count = source["count"];
+	        this.original_size = source["original_size"];
+	        this.final_size = source["final_size"];
+	    }
 	}
 
 }
