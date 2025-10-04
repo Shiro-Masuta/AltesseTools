@@ -4,7 +4,7 @@ Voici un fichier **README.md** prêt à l'emploi pour **Altesse Tools**. Tu n'as
 
 <img width="100" height="100" alt="altesseToolsLogo" src="https://github.com/user-attachments/assets/4f8211fe-ca1a-4848-ab9d-f86606532a8f" />
 
-**Altesse Tools** est une boîte à outils modulaire développée en **Go**, conçue pour centraliser plusieurs utilitaires pratiques. Grâce à une architecture évolutive, de nouveaux outils sont régulièrement ajoutés pour répondre à divers besoins techniques.
+**Altesse Tools** est une boîte à outils modulaire développée en **Go**, conçue pour centraliser plusieurs utilitaires pratiques. de nouveaux outils sont régulièrement ajoutés pour répondre à divers besoins techniques.
 
 ---
 
