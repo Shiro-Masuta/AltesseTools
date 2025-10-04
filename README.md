@@ -27,7 +27,7 @@
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/ton-utilisateur/altesse-tools.git
+   git clone https://github.com/Shiro-Masuta/altesse-tools.git
    cd altesse-tools
    ```
 
