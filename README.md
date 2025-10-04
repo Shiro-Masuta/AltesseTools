@@ -1,5 +1,3 @@
-Voici un fichier **README.md** prêt à l'emploi pour **Altesse Tools**. Tu n'as qu'à copier ce contenu dans un fichier `README.md` à la racine de ton projet GitHub :
-
 # Altesse Tools
 
 <img width="100" height="100" alt="altesseToolsLogo" src="https://github.com/user-attachments/assets/4f8211fe-ca1a-4848-ab9d-f86606532a8f" />
