@@ -1,8 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import { SelectImagePaths, SaveDroppedFiles } from '../../../wailsjs/go/main/App';
+  import { SelectFiles, SaveDroppedFiles } from '../../../wailsjs/go/main/App';
 
-  export let accept = '*/*';
+  export let accept = '*/*'; // ex: "*.png;*.jpg;*.jpeg" ou "*.*" ou "image/*"
   export let multiple = true;
   export let placeholder = 'Glissez-déposez ou cliquez pour sélectionner';
   export let disabled = false;
@@ -15,12 +15,19 @@
     if (disabled) return;
 
     try {
-      const result = await SelectImagePaths();
+      const filters = [
+        {
+          DisplayName: "Fichiers",
+          Pattern: accept
+        }
+      ];
+
+      const result = await SelectFiles("Sélectionnez vos fichiers", filters, multiple);
       if (!result || result.length === 0) return;
 
       dispatch('files', { files: result });
     } catch (err) {
-      console.error('Erreur lors de la sélection d\'images:', err);
+      console.error("Erreur lors de la sélection de fichiers:", err);
     }
   }
 
@@ -28,7 +35,6 @@
     if (!files || disabled) return;
     
     try {
-      // Convertir les fichiers en données à envoyer au backend
       const filesData = await Promise.all(
         Array.from(files).map(async (file) => {
           const arrayBuffer = await file.arrayBuffer();
@@ -40,17 +46,13 @@
         })
       );
 
-      // Utiliser le service Go pour sauvegarder et valider
-      const validPaths = await SaveDroppedFiles(filesData);
+      const savedPaths = await SaveDroppedFiles(filesData);
       
-      if (validPaths.length > 0) {
-        dispatch('files', { files: validPaths });
-      } else {
-        alert('Aucun fichier image valide trouvé dans la sélection');
+      if (savedPaths.length > 0) {
+        dispatch('files', { files: savedPaths });
       }
     } catch (error) {
-      console.error('Erreur lors du traitement des fichiers:', error);
-      alert('Erreur lors du traitement des fichiers droppés');
+      console.error("Erreur lors du traitement des fichiers:", error);
     }
   }
 

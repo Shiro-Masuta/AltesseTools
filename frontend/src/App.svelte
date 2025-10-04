@@ -4,7 +4,7 @@
 
     import Home from "./pages/home_pages.svelte";
     import Images from "./pages/images_pages.svelte";
-
+    import Files from "./pages/files_pages.svelte";
     // Menu avec composant
     const menuItems = [
         {
@@ -14,6 +14,7 @@
             component: Home,
         },
         { id: "image", icon: "image", label: "Images", component: Images },
+        { id: "files", icon: "folder", label: "Files", component: Files },
     ];
 
     let selected = menuItems[0];

@@ -23,10 +23,10 @@
 
 /* ===== SCROLLBAR GLOBAL ===== */
 
-/* Scrollbars WebKit (Chrome, Safari, Edge) */
+/* Scrollbars WebKit */
 *::-webkit-scrollbar {
-    width: 16px;       /* largeur verticale par défaut */
-    height: 16px;      /* hauteur horizontale */
+    width: 16px;      
+    height: 16px;     
 }
 
 *::-webkit-scrollbar-track {
@@ -57,22 +57,21 @@
     background: var(--surface);
 }
 
-/* Scrollbar fine globale (optionnelle) */
+/* Scrollbar fine globale */
 *::-webkit-scrollbar:horizontal,
 *::-webkit-scrollbar:vertical {
-    scrollbar-width: auto; /* Firefox */
+    scrollbar-width: auto;
 }
 
-/* Firefox */
 * {
     scrollbar-width: auto;
     scrollbar-color: var(--accent) var(--surface);
 }
 
-/* Scrollbar apparaissant au survol (optionnelle) */
+/* Scrollbar apparaissant au survol */
 .scrollbar-hover {
-    scrollbar-width: none;          /* Firefox */
-    -ms-overflow-style: none;       /* IE/Edge */
+    scrollbar-width: none;          
+    -ms-overflow-style: none;
     position: relative;
 }
 

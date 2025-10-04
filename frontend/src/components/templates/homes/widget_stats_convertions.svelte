@@ -34,31 +34,7 @@
   });
 </script>
 
-<!-- Variables CSS dans un style global ou fichier CSS séparé -->
-<style>
-  :root {
-    --background: #0f172a;
-    --surface: #1e293b;
-    --surface-alt: #334155;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-tiers: #ffffff;
-    --accent: #818cf8;
-    --accent-light: #a5b4fc;
-    --accent-dark: #6366f1;
-    --border: #475569;
-    --muted: #64748b;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --error: #ef4444;
-    --gradient-primary: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --gradient-hover: linear-gradient(45deg, var(--accent-light), var(--accent), var(--accent-dark));
-    --shadow-accent: 0 0 30px rgba(129, 140, 248, 0.3);
-    --backdrop-blur: blur(12px);
-  }
-</style>
-
-<div class="bg-[var(--background)] border border-[var(--border)] rounded-xl m-5 p-6 max-w-sm text-[var(--text-primary)]">
+<div class="bg-[var(--background)] backdrop-blur-[var(--backdrop-blur)] border border-[var(--border)] shadow-[var(--shadow-accent)] rounded-xl m-5 p-6 max-w-sm text-[var(--text-primary)]">
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
     <h2 class="text-xl font-semibold">Statistiques</h2>

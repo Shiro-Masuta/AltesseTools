@@ -1,3 +1,51 @@
+export namespace files {
+	
+	export class OptionRename {
+	    NewName: string;
+	    Prefix: string;
+	    Suffix: string;
+	    Replace: string;
+	    With: string;
+	    StartNumber: number;
+	    Padding: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new OptionRename(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.NewName = source["NewName"];
+	        this.Prefix = source["Prefix"];
+	        this.Suffix = source["Suffix"];
+	        this.Replace = source["Replace"];
+	        this.With = source["With"];
+	        this.StartNumber = source["StartNumber"];
+	        this.Padding = source["Padding"];
+	    }
+	}
+
+}
+
+export namespace frontend {
+	
+	export class FileFilter {
+	    DisplayName: string;
+	    Pattern: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new FileFilter(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.DisplayName = source["DisplayName"];
+	        this.Pattern = source["Pattern"];
+	    }
+	}
+
+}
+
 export namespace images {
 	
 	export class Options {

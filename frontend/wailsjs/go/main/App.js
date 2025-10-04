@@ -6,18 +6,14 @@ export function CleanupTempFiles() {
   return window['go']['main']['App']['CleanupTempFiles']();
 }
 
-export function HandleDroppedFiles(arg1) {
-  return window['go']['main']['App']['HandleDroppedFiles'](arg1);
-}
-
 export function SaveDroppedFiles(arg1) {
   return window['go']['main']['App']['SaveDroppedFiles'](arg1);
 }
 
-export function SelectImagePaths() {
-  return window['go']['main']['App']['SelectImagePaths']();
+export function SelectFiles(arg1, arg2, arg3) {
+  return window['go']['main']['App']['SelectFiles'](arg1, arg2, arg3);
 }
 
-export function SelectOutputFolder() {
-  return window['go']['main']['App']['SelectOutputFolder']();
+export function SelectFolder(arg1) {
+  return window['go']['main']['App']['SelectFolder'](arg1);
 }

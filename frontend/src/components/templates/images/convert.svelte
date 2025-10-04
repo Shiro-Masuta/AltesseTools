@@ -160,10 +160,34 @@
 </script>
 
 <div class="space-y-6 p-4 text-[var(--text-primary)]">
+  <div
+    class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-6 border-b border-slate-600"
+  >
+    <div class="flex items-center gap-4 mb-4 sm:mb-0">
+      <div
+        class="w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30"
+      >
+        <span class="material-icons-outlined text-white text-3xl"> sync_alt </span>
+      </div>
+      <div>
+        <h1
+          class="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent"
+        >
+          Conversion d'image
+        </h1>
+        <p class="text-sm text-slate-400 mt-1">
+          Convertisser vos images (le temps de traitement depend de
+          la machine)
+        </p>
+      </div>
+    </div>
+  </div>
+
   <FileDropzone
+    accept="*.png;*.jpg;*.jpeg;*.webp;*.avif;*.bmp;*.tiff;*.gif"
+    multiple={true}
+    placeholder="Sélectionnez ou déposez vos images"
     on:files={handleFiles}
-    disabled={isLimitReached}
-    {placeholder}
   />
 
   <FilePreview

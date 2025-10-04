@@ -19,29 +19,32 @@ func NewSystemService() *SystemService {
 
 func (s *SystemService) Startup(ctx context.Context) {
 	s.ctx = ctx
+}
 
-	// Goroutine qui envoie des infos toutes les 2 secondes
+// --- Méthodes exposées au frontend ---
+
+// Lancer la boucle d’updates (appelée depuis le frontend)
+func (s *SystemService) Start() {
 	go func() {
 		ticker := time.NewTicker(2 * time.Second)
 		defer ticker.Stop()
 
 		for {
 			select {
-			case <-ctx.Done():
+			case <-s.ctx.Done():
 				return
 			case <-ticker.C:
 				info, err := system.GetSystemMinimalInfo()
 				if err != nil {
 					continue
 				}
-				// Envoi d'un événement au frontend
-				runtime.EventsEmit(ctx, "system:update", info)
+				runtime.EventsEmit(s.ctx, "system:update", info)
 			}
 		}
 	}()
 }
 
-// Méthode callable depuis le front pour un refresh manuel
+// Snapshot immédiat
 func (s *SystemService) GetNow() (*system.SystemMinimalInfo, error) {
 	return system.GetSystemMinimalInfo()
 }

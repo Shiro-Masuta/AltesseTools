@@ -5,4 +5,6 @@ import {context} from '../models';
 
 export function GetNow():Promise<system.SystemMinimalInfo>;
 
+export function Start():Promise<void>;
+
 export function Startup(arg1:context.Context):Promise<void>;

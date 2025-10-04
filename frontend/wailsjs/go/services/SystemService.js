@@ -6,6 +6,10 @@ export function GetNow() {
   return window['go']['services']['SystemService']['GetNow']();
 }
 
+export function Start() {
+  return window['go']['services']['SystemService']['Start']();
+}
+
 export function Startup(arg1) {
   return window['go']['services']['SystemService']['Startup'](arg1);
 }

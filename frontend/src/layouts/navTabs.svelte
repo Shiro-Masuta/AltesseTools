@@ -16,9 +16,9 @@
   }
 </script>
 
-<div class="w-full" style="color: var(--text-primary); max-width:1200px;">
+<div class="w-full " style="color: var(--text-primary); max-width:1200px;">
   <!-- Navigation -->
-  <div class="flex border-b overflow-x-auto" style="border-color: var(--border); background-color: var(--background);">
+  <div class="flex border-b overflow-x-auto backdrop-blur-[var(--backdrop-blur)] border border-[var(--border)] rounded-xl shadow-[var(--shadow-accent)]" style="border-color: var(--border); background-color: var(--background);">
     {#each tabs as tab, index}
       <button
         class="px-4 py-2 font-medium text-sm transition-colors duration-200 border-b-2 whitespace-nowrap flex-shrink-0"
